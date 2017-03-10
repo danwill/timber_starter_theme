@@ -34,7 +34,6 @@ class StarterSite extends TimberSite {
         add_action( 'init', array( $this, 'register_menus' ) );
         add_action( 'init', array( $this, 'register_widgets' ) );
         add_action( 'init', array( $this, 'register_helpers' ) );
-        add_action( 'init', array( $this, 'register_acf' ) );
         parent::__construct();
     }
 
@@ -63,10 +62,6 @@ class StarterSite extends TimberSite {
 
     function register_helpers(){
         require('lib/helpers.php');
-    }
-
-    function register_acf() {
-        require('lib/acf.php');
     }
 
 
@@ -124,5 +119,24 @@ function my_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
 
+/**
+ * ACF Pro Settings
+ * @link https://www.advancedcustomfields.com/resources/including-acf-in-a-plugin-theme/
+ */
+add_filter('acf/settings/path', function ($path) {
+    $path = get_stylesheet_directory() . '/acf/';
+    return $path;
+});
 
+add_filter('acf/settings/dir', function ($dir) {
+    $dir = get_stylesheet_directory_uri() . '/acf/';
+    return $dir;
+});
+
+include_once( get_stylesheet_directory() . '/acf/acf.php' );
+
+add_filter('acf/options_page/settings', function ($dir) {
+    $dir = get_stylesheet_directory_uri() . '/acf/';
+    return $dir;
+});
 
