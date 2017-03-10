@@ -16,7 +16,7 @@ const public = 'assets';
 
 mix.setPublicPath(public);
 mix.browserSync({
-    proxy: 'honored.dev',
+    proxy: 'project.dev',
     files: [
         `${public}/js/*.js`,
         `${public}/css/*.css`,
