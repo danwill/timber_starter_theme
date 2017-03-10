@@ -1,0 +1,66 @@
+
+// ---
+// Base Site Styles
+// ---
+
+// Keep it mobile first, yo! Read this:
+// http://www.abookapart.com/products/mobile-first
+// Actually, just buy all of those books.
+
+// Anyways, here's how I like to structure my content styles:
+
+
+// Border box all the things:
+
+* {
+	 box-sizing: border-box;
+}
+
+// ---
+// General Selectors
+// ---
+
+img {
+	max-width: 100%;
+}
+
+
+// ---
+// Header
+// ---
+
+// You might want to split this into your own partial!
+
+
+
+
+// ---
+// Main Site Content
+// ---
+
+.wrapper {
+	max-width: $screen-md; // I'm using a pretty narrow wrapper, you might want this to be $screen-lg depending on your layout.
+	width: 93%;
+	margin: 0 auto;
+}
+
+
+// ---
+// Media
+// ---
+
+
+
+
+// ---
+// Footer
+// ---
+
+
+
+
+// ---
+// Misc Utilities
+// ---
+
+

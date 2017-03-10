@@ -1,0 +1,48 @@
+
+// ----
+//
+// Table of Contents
+//
+// Import all our partials here. Don't add styles to this file, keep everything separated into the partials - it helps to keep the code in reusable chunks.
+//
+// ----
+
+
+//--
+// 1. Import vendor (third party code). 
+// 	  We do this first because we may override some of these and they are not dependent on our code
+//--
+
+@import "vendor/normalize";
+
+
+//--
+// 2. Import our variables and mixins. 
+//    Other than the helpers file, this code doesn't actually compile to anything - just utilities to be used throughout the partials.
+//--
+
+@import "utility/variables";
+@import "utility/mixins";
+@import "utility/helpers";
+
+
+//--
+// 3. Import our actual styles.
+//    See the files for descriptions of their contents. You can add any other partials you see fit - for example, WordPress might have a _posts.scss partial.
+//--
+
+@import "partials/typography";
+@import "partials/buttons";
+@import "partials/forms";
+@import "partials/nav";
+@import "partials/base";
+
+
+//--
+// 4. Import shameful styles.
+//    Uh oh, what's this? A technique developed by the ingenious Harry Roberts (http://j.mp/shamecss), the _shame.scss contains all of the styles you know you shouldn't be doing. This might include !importants, hacky overrides, or verbose styles you know can be done differenty. The idea is that you have all of them in one place to address later.
+//--
+
+@import "shame";
+
+

@@ -1,0 +1,134 @@
+
+// ---
+// Variables
+// ---
+
+// Welcome to the variables file!
+
+
+// ---
+// Screen sizes
+// ---
+
+// Read this NOW:
+// http://bradfrostweb.com/blog/post/7-habits-of-highly-effective-media-queries/
+
+// "Start with the small screen first, then expand until it looks like shit. Time for a breakpoint!"
+// -Stephen Hay
+
+$screen-xs: 		28em;
+$screen-sm: 		35em;
+$screen-md: 		52em;
+$screen-lg: 		60em;
+
+
+
+// ---
+// Colors
+// ---
+
+// These are names for actual colors. Below, you'll see how to name them for use.
+
+// Aw man, I love Kuler:
+// http://adobe.ly/1wwZ0Rk
+
+$dark-blue: 	#334D5C;
+$teal: 				#45B29D;
+$yellow: 			#EFC94C;
+$orange: 			#E27A3F;
+$red: 				#DF4949;
+
+// In art school I was told never to make white pure white and black pure black - not sure if that holds up for the world wide web, but maybe!
+$white: #fefefe;
+$black: #1F232A;
+
+
+// STOP!!! READ THIS:
+// Semantic Color Names
+// http://thesassway.com/beginner/variable-naming
+
+// These are nice utility colors
+$color-accent-light: 	$yellow;
+$color-accent-med: 		$teal;
+$color-accent-dark:		$dark-blue;
+
+$color-text-light: 		$white;
+$color-text-dark: 		$black;
+
+$color-notice-success:	 $teal;
+$color-notice-info:		   lighten($dark-blue, 20%);
+$color-notice-danger:		 $red;
+$color-notice-warning:	 $orange;
+
+// Then element-based names are nice too
+$color-link: 		       $color-accent-med;
+$color-link-hover: 		 darken($color-link, 20%);
+$color-link-active: 	 darken($color-link, 60%);
+
+// The most commonly rotated color:
+$color-rotate-text:   $color-text-light;
+$color-rotate-bkgd:   $color-accent-med;
+$color-rotate-link:   $color-accent-light;
+
+
+// ---
+// Scale
+// ---
+
+// Use these values for font sizes, margins, padding, everything! It's nice to use consistent values instead of magic numbers (http://j.mp/smellycss).
+
+// Also, rems are awesome. Here's an article about them:
+// http://snook.ca/archives/html_and_css/font-size-with-rem
+// And a small pen I made that explains them: http://codepen.io/laras126/pen/YyWLgz
+
+
+$size-base:  		1.1rem;
+$size-sml:  		$size-base*0.8;
+
+$size-h1:  			$size-base*2.6;
+$size-h2:  			$size-base*2.2;
+$size-h3:  			$size-base*1.8;
+$size-h4:  			$size-base*1.4;
+$size-h5:  			$size-base*1.2;
+$size-h6:  			$size-sml;
+
+
+
+// ---
+// Typography
+// ---
+
+// Pretty standard.
+
+$sans-serif: 		Helvetica, sans-serif;
+$serif:         Georgia, serif;
+
+// If you are using webfonts and are a good girl/boy, you will define some fallbacks (see the top of _typography.scss for where to use them):
+
+// $sans-serif-fallback: Helvetica, sans-serif;
+// $serif-fallback: Georgia, serif;
+
+// Here's a relatively complicated article about web fonts and performance:
+// http://artequalswork.com/posts/adventures-in-dynamic-subsetting/
+
+
+// Semantic names
+
+$line-height-base: 	1.5;
+
+$heading-font: 		$serif;
+$body-font: 		  $sans-serif;
+
+// $body-font-fallback:		$sans-serif-fallback;
+// $heading-font-fallback:	$serif-fallback
+
+
+
+// ----
+// Helpers
+// ----
+
+// Shortcuts for things you might be typing a lot.
+
+$color-accent-border: 1px dotted $color-accent-med;
+

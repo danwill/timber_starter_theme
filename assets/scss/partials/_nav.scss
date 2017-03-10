@@ -1,0 +1,40 @@
+.nav-main {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.75s ease;
+
+	&.active {
+		max-height: $screen-md;
+	}
+
+	@include bp(md) {
+		max-height: none;
+	}
+}
+
+.nav-items {
+	list-style-type: none;
+	padding-left: 0;
+
+	@include bp(md) {
+		display: flex;
+		flex-wrap: wrap;
+		& > li {
+		}
+	}
+}
+
+	.nav-item-link {
+		padding: 1.4rem;
+	}
+
+
+// Link to open the nav
+
+.nav-trigger {
+
+	@include bp(md) {
+		display: none;
+	}
+
+}

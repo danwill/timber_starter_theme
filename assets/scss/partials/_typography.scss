@@ -1,0 +1,70 @@
+
+// ---
+// Typography
+// ---
+
+body {
+	font-family: $body-font;
+	line-height: $line-height-base;
+}
+
+a,
+a:visited,
+a:link {
+	color: $color-link;
+	text-decoration: none;
+}
+
+a {
+	&:hover, &:focus {
+		color: $color-link-hover;
+	}
+	&:active {
+		color: $color-link-active;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: $line-height-base;
+	font-family: $heading-font;
+	margin-bottom: 0;
+}
+
+h1 {
+	font-size: $size-h1;
+	margin-top: $size-h3;
+}
+
+h2 {
+	font-size: $size-h2;
+	margin-top: $size-h4;
+}
+
+h3 {
+	font-size: $size-h3;
+	margin-top: $size-h4;
+}
+
+h4 {
+	font-size: $size-h4;
+	margin-top: $size-base;
+}
+
+h5 {
+	font-size: $size-h5;
+	margin-top: $size-base;
+}
+
+h6 {
+	font-size: $size-sml;
+	margin-top: $size-base;
+}
+
+p {
+	margin-top: $size-base;
+	font-size: $size-base;
+}
+
+small {
+	font-size: $size-sml;
+}

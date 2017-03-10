@@ -1,0 +1,19 @@
+<a href="#" class="nav-trigger">Menu</a>
+<nav class="nav-main" role="navigation">
+	<ul class="nav-items">
+	{% for item in menu.get_items %}
+		<li class="nav-item {{item.classes | join(' ')}}">
+			<a class="nav-item-link" href="{{item.link}}">{{item.title}}</a>
+			{% if item.get_children %}
+				<ul class="nav nav-drop">
+				{% for child in item.get_children %}
+					<li class="nav-drop-item">
+						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+</nav><!-- /.nav-main -->
