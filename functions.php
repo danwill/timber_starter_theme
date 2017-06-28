@@ -1,6 +1,5 @@
 <?php
 
-// If the Timber plugin isn't activated, print a notice in the admin.
 if ( ! class_exists( 'Timber' ) ) {
     add_action( 'admin_notices', function() {
             echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
@@ -8,9 +7,7 @@ if ( ! class_exists( 'Timber' ) ) {
     return;
 }
 
-
-// Create our version of the TimberSite object
-class StarterSite extends TimberSite {
+class MechanicSite extends TimberSite {
 
     // This function applies some fundamental WordPress setup, as well as our functions to include custom post types and taxonomies.
     function __construct() {
@@ -34,15 +31,9 @@ class StarterSite extends TimberSite {
         add_action( 'init', array( $this, 'register_menus' ) );
         add_action( 'init', array( $this, 'register_widgets' ) );
         add_action( 'init', array( $this, 'register_helpers' ) );
+
         parent::__construct();
     }
-
-
-    // Abstracting long chunks of code.
-
-    // The following included files only need to contain the arguments and register_whatever functions. They are applied to WordPress in these functions that are hooked to init above.
-
-    // The point of having separate files is solely to save space in this file. Think of them as a standard PHP include or require.
 
     function register_post_types(){
         require('lib/custom-types.php');
@@ -73,6 +64,8 @@ class StarterSite extends TimberSite {
 
         // Our menu occurs on every page, so we add it to the global context.
         $context['menu'] = new TimberMenu();
+        // Enable to add ACF options page fields to the global context
+        // $context['options'] = get_fields('option');
 
         // This 'site' context below allows you to access main site information like the site title or description.
         $context['site'] = $this;
@@ -83,19 +76,27 @@ class StarterSite extends TimberSite {
     // See more here: http://twig.sensiolabs.org/doc/advanced.html
     function add_to_twig( $twig ) {
         $twig->addExtension( new Twig_Extension_StringLoader() );
+        
         // Loads contents of an SVG file inline
+        // Warning: file_get_contents may not work in all environments. Consider rewriting to use a CURL request instead
         $twig->addFunction( new Twig_SimpleFunction( 'svg', function( $path ) {
             if (substr($path, 0, 1) !== '/') {
                 $path = "/{$path}";
             }
             echo file_get_contents(get_template_directory_uri() . $path);
         }));
+
+        // Example of a custom Twig filter
+        $twig->addFilter( new Twig_SimpleFilter('break_space', function( $text ) {
+            return str_replace(' ', '<br>', $text);
+        }));
+
         return $twig;
     }
 
 }
 
-new StarterSite();
+new MechanicSite();
 
 
 /*
@@ -107,9 +108,8 @@ new StarterSite();
 // Enqueue scripts
 function my_scripts() {
 
-    // Use jQuery from a CDN
+    // Remove jQuery
     wp_deregister_script('jquery');
-    // wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', array(), null, true);
 
     // Enqueue our css and js
     // Uses the version() function in lib/helpers.php to pull from the versioned files created by Laravel Mix
@@ -140,3 +140,26 @@ add_filter('acf/options_page/settings', function ($dir) {
     return $dir;
 });
 
+
+// Add ACF Options page
+/*
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title' => 'Global Settings',
+        'menu_title' => 'Global Settings'
+    ));
+}
+*/
+
+// Filter to customize the value shown on Post Object types for custom posts that don't support a title
+// @link https://www.advancedcustomfields.com/resources/acf-fields-post_object-result/
+/*
+function posttype_post_object_result( $title, $post, $field, $post_id ) {
+    $title = get_field('first_name', $post->ID) . ' ' . get_field('last_name', $post->ID);
+    return $title;
+}
+add_filter('acf/fields/post_object/result/name=acffieldname', 'posttype_post_object_result', 10, 4);
+*/
+
+// Boost jpeg encode quality, if needed
+// add_filter( 'jpeg_quality', create_function( '', 'return 92;' ) );

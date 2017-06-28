@@ -1,15 +1,4 @@
-const mix = require('laravel-mix').mix;
-
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for your application, as well as bundling up your JS files.
- |
- */
+const { mix } = require('laravel-mix');
 
 const resources = 'source';
 const public = 'assets';
@@ -27,13 +16,27 @@ mix.browserSync({
 
 // mix.js(`${resources}/scripts/app.js`, `${public}/js`).sourceMaps() //to enable sourcemaps
 mix.js(`${resources}/scripts/app.js`, `${public}/js`)
-   .sass(`${resources}/styles/app.scss`, `${public}/css`)
-        .options({
-            processCssUrls:false
-        });
+    .sass(`${resources}/styles/app.scss`, `${public}/css`, {
+        outputStyle: mix.config.inProduction ? 'compressed' : 'expanded'
+    }).options({
+        processCssUrls:false
+    }); 
 
 if(mix.config.inProduction) {
     mix.version();
 }
 
 mix.disableNotifications();
+
+// Enable this for packages that need aliasing
+/*
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            "TweenMax": 'gsap/src/uncompressed/TweenMax.js',
+            "TimelineMax": 'gsap/src/uncompressed/TimelineMax.js',
+            "TweenLite": 'gsap/src/uncompressed/TweenLite.js',
+        },
+    }
+});
+*/

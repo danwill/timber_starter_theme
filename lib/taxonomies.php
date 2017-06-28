@@ -4,6 +4,12 @@
  *
  * Taxonomies
  *
+ * Notes:
+ * * Use https://generatewp.com/taxonomy/ to generate the args
+ * 
  */
-
-// Same as with Custom Types, you only need the arguments and register_taxonomy function here. They are hooked into WordPress in functions.php.
+/*
+$taxnameLabels = [];
+$taxnameArgs = [];
+register_taxonomy( 'taxname', array( 'type' ), $subjectArgs );
+*/

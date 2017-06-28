@@ -25,8 +25,7 @@ if (! function_exists('version')) {
         }
         if (! $manifest) {
             if (! file_exists($manifestPath = get_stylesheet_directory().$manifestDirectory.'/mix-manifest.json')) {
-                // If it doesn't exist, just return the requested files
-                return get_template_directory_uri().$manifestDirectory.$path;
+                throw new Exception('The Mix manifest does not exist.');
             }
             $manifest = json_decode(file_get_contents($manifestPath), true);
         }
