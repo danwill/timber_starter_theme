@@ -54,7 +54,7 @@ _**Note:** The following instructions are for setting up a project called **Mech
   * Full list of options available [here](https://github.com/aaemnnosttv/wp-cli-valet-command#wp-valet-new)
 3. Confirm that the site is running by going to <http://mechanic.dev>
 4. `cd` into the project directory
-5. If you use Sublime Text and have the [CLI tools installed](https://www.sublimetext.com/docs/3/osx_command_line.html), you may want to run `subl .` and save the project.
+
 
 Let's clone in this starter theme and set up some thing in Wordpress:
 
@@ -63,11 +63,11 @@ Let's clone in this starter theme and set up some thing in Wordpress:
 3. Remove some default plugins: `wp plugin uninstall hello akismet`
 4. Install Timber: `wp plugin install timber-library --activate`
 5. Activate Soil: `wp plugin activate soil`
-6. `cd wp-content/themes`
-  * You may want to remove the standard Wordpress themes from this directory
+6. `cd ../themes`
+  * You may want to remove the standard Wordpress themes from this directory (`open .`)
 7. Clone in this theme: `git clone --depth=1 https://github.com/danwill/timber_starter_theme.git mechanic && rm -rf mechanic/.git`
-  * Remember to change _mechanic_ above to your project name!
-8. Go to <https://www.advancedcustomfields.com/my-account/>, sign on, and download the most recent version of ACF Pro
+  * Remember to change **both** instances of _mechanic_ above to your project name!
+8. `open https://www.advancedcustomfields.com/my-account/`, sign on, and download the most recent version of ACF Pro
 9. Copy the contents of the ACF Pro .zip file into the theme's `acf/` directory
 10. Activate the starter theme: `wp theme activate mechanic`
 
@@ -99,9 +99,7 @@ If you are a team member working on a project that someone has already created u
   * You can change this option after the project is created using `valet secure mechanic` / `valet unsecure mechanic`
   * Full list of options available [here](https://github.com/aaemnnosttv/wp-cli-valet-command#wp-valet-new)
 3. Confirm that the site is running by going to <http://mechanic.dev>
-4. `cd` into the project directory
-5. If you use Sublime Text and have the [CLI tools installed](https://www.sublimetext.com/docs/3/osx_command_line.html), you may want to run `subl .` and save the project.
-6. `cd` into the wp-content folder `cd wp-content` and remove everything in this directory. We will clone the project repo into here.
+6. `cd` into the wp-content folder `cd mechanic/wp-content` and remove everything in this directory. We will clone the project repo into here.
 7. `git clone your.git.repo.url.here . `
   * _Note the trailing "space period space"
 8. Open in Tower, if that's your thing: `gittower .` and make sure your remote _origin_ is set up correctly
@@ -112,12 +110,10 @@ If you are a team member working on a project that someone has already created u
 13. Run `npm install`
 14. Run `npm run watch` to confirm that the source files compile successfully. The site should open up in your browser with a URL of <localhost:3000>
 
+## Extras
 
-1. Make sure you have installed the plugins for the Timber Library and Advanced Custom Fields. You can find these by searching for them in Plugins > Add New.
-2. Download the zip for this theme (or clone it) and move it to `wp-content/themes` in your WordPress installation. 
-3. Rename the folder to something that makes sense for you website. It should be a short name with no spaces - underscores and hyphens are okay - and all lowercase.
-4. Activate the theme in Appearance >  Themes.
-5. You should see a notice that Timber needs to be activated; go to Plugins > All and activate both Timber and Advanced Custom Fields (ACF for short.)
+If you use Sublime Text and have the [CLI tools installed](https://www.sublimetext.com/docs/3/osx_command_line.html), you may want to run `subl .` from within your new theme (e.g. `themes/mechanic`) and save the project.
+
 6. Set a static home page in Settings > Reading and choosing "A Static Page". This will automatically act as your home page and will reference the `views/front-page.twig` template.
 
 ## Working in the Theme
