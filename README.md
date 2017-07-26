@@ -80,7 +80,7 @@ Now get our front-end process set up:
 Git
 
 1. We will initialize a git repo in the wp-content folder, so `cd ../..` and `git init`
-2. `git add *` and `git commit - "Initial commit"`
+2. `git add *` and `git commit -m "Initial commit"`
 3. If you use Tower: 
   * Open the repo in Tower with `gittower .`
   * Add a remote repo named _origin_ and paste in the link to your remote repo
@@ -100,7 +100,7 @@ If you are a team member working on a project that someone has already created u
 3. Confirm that the site is running by going to <http://your-project-name.dev>
 6. `cd` into the wp-content folder `cd your-project-name/wp-content` and remove everything in this directory. We will clone the project repo into here.
 7. `git clone your.git.repo.url.here . `
-  * _Note the trailing "space period space"
+  * _Note the trailing "space period space"_
 8. Open in Tower, if that's your thing: `gittower .` and make sure your remote _origin_ is set up correctly
 9. `wp plugin activate timber-library`
 10. `wp plugin activate soil`
