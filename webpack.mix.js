@@ -1,4 +1,4 @@
-const { mix } = require('laravel-mix');
+const mix = require('laravel-mix');
 
 const resources = 'source';
 const public = 'assets';
@@ -17,12 +17,12 @@ mix.browserSync({
 // mix.js(`${resources}/scripts/app.js`, `${public}/js`).sourceMaps() //to enable sourcemaps
 mix.js(`${resources}/scripts/app.js`, `${public}/js`)
     .sass(`${resources}/styles/app.scss`, `${public}/css`, {
-        outputStyle: mix.config.inProduction ? 'compressed' : 'expanded'
+        outputStyle: mix.inProduction() ? 'compressed' : 'expanded'
     }).options({
         processCssUrls:false
     }); 
 
-if(mix.config.inProduction) {
+if(mix.inProduction()) {
     mix.version();
 }
 

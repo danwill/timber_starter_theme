@@ -7,7 +7,7 @@ This is a barebones project scaffold for developing Wordpress themes. It creates
 * Soil - Sensible Wordpress defaults
 * Vue - For front-end magic
 
-This starter theme is based on the awesome [timber-starter-theme](https://github.com/laras126/timber-starter-theme)
+This starter theme is based on the awesome [timber-starter-theme](https://github.com/laras126/timber-starter-theme) and [lumberjack](https://github.com/Rareloop/lumberjack)
 
 
 ## What's here?
@@ -116,12 +116,3 @@ If you use Sublime Text and have the [CLI tools installed](https://www.sublimete
 
 6. Set a static home page in Settings > Reading and choosing "A Static Page". This will automatically act as your home page and will reference the `views/front-page.twig` template.
 
-## Working in the Theme
-
-There is an example of a custom post type called "Cocktails". You can create your own at [generatewp.com](http://generatewp.com) and add that array to `lib/custom-types.php`.
-
-Custom Fields can be customized from the Custom Fields section in the Dashboard menu. 
-
-Read the notes in `views/page-content.twig` and `views/front-page.twig` for notes on using ACF in your templates, and general Twig info.
-
-## More soon!
