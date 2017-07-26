@@ -6,8 +6,6 @@ use Timber\MenuItem as TimberMenuItem;
 
 class MenuItem extends TimberMenuItem
 {
-    public $PostClass = 'Mechanic\PostTypes\Post';
-
     public $listItemClass = 'page-list__item';
 
     public function __construct($data)
