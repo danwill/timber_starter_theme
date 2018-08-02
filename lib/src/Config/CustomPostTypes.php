@@ -64,7 +64,7 @@ class CustomPostTypes
      * Replace project with project namespace (optional) and postname with name of custom post type (required)
      *
      * @link https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
-     
+     */
 
     /*
     function project_postname_columns($columns) {

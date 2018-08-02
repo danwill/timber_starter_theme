@@ -1,24 +1,31 @@
+// Laravel Mix config
+// Documentation: https://github.com/JeffreyWay/laravel-mix/tree/master/docs#readme
+
 const mix = require('laravel-mix');
 
-const resources = 'source';
+const source = 'source';
 const public = 'assets';
 
 mix.setPublicPath(public);
+
+// Full options: https://browsersync.io/docs/options/
 mix.browserSync({
-    proxy: 'project.dev',
+    proxy: 'project.test',
     files: [
         `${public}/js/*.js`,
         `${public}/css/*.css`,
         'views/**/*.twig',
         '**/*.php'
-    ]
+    ],
+    ghostMode: false
 });
 
-// mix.js(`${resources}/scripts/app.js`, `${public}/js`).sourceMaps() //to enable sourcemaps
-mix.js(`${resources}/scripts/app.js`, `${public}/js`)
-    .sass(`${resources}/styles/app.scss`, `${public}/css`, {
+// mix.js(`${source}/scripts/app.js`, `${public}/js`).sourceMaps() //to enable sourcemaps
+mix.js(`${source}/scripts/app.js`, `${public}/js`)
+    .sass(`${source}/styles/app.scss`, `${public}/css`, {
         outputStyle: mix.inProduction() ? 'compressed' : 'expanded'
-    }).options({
+    })
+    .options({
         processCssUrls:false
     }); 
 
@@ -27,16 +34,3 @@ if(mix.inProduction()) {
 }
 
 mix.disableNotifications();
-
-// Enable this for packages that need aliasing
-/*
-mix.webpackConfig({
-    resolve: {
-        alias: {
-            "TweenMax": 'gsap/src/uncompressed/TweenMax.js',
-            "TimelineMax": 'gsap/src/uncompressed/TimelineMax.js',
-            "TweenLite": 'gsap/src/uncompressed/TweenLite.js',
-        },
-    }
-});
-*/
