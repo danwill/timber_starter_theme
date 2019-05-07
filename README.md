@@ -14,7 +14,7 @@ This starter theme is based on the awesome [timber-starter-theme](https://github
 
 `assets/` contains static front-end files and images. In other words, your compiled CSS, JS, SVGs, or any PNGs would live here.
 
-`acf-json/` contains JSON files for tracking Advanced Custom Fields. This is incredibly useful for version control. After cloning this repository, you can go into Custom Fields from the Dashboard and select "Sync" to import these custom fields into your theme.
+`acf-json/` contains JSON files for tracking Advanced Custom Fields. This is incredibly useful for version control. After cloning this repository, you can go in`to Custom Fields from the Dashboard and select "Sync" to import these custom fields into your theme.
 
 `lib/` contains files for custom post type arguments and taxonomies. These are added to WordPress inside functions.php and could be included there, but are separated into other files to keep functions.php a bit cleaner.
 
@@ -41,6 +41,13 @@ Finally, there are a couple of Wordpress-specific command line tools we need:
 1. Install [WP-CLI](http://wp-cli.org/)
 2. Install scaffolding plugin: `wp package install aaemnnosttv/wp-cli-valet-command`
 
+May need to increase PHP memory limit. If you get any "allowed memory size of X bytes exhausted" errors:
+1. Find where your local php.ini file: `php --ini`
+2. Open the `php.ini` file at the listed path and search for `memory_limit`
+3. Change the value to `512M` then save
+4. Type `php -ini | grep memory_limit` to make sure the change was applied. If not, look for a `php-memory-limits.ini` file instead of `php.ini` and apply the value there.
+
+
 ## Creating a Project
 
 Here's how to create a new Wordpress project and clone in this starter theme to get started:
@@ -52,7 +59,7 @@ _**Note:** The following instructions are for setting up a project called **Mech
   * You can leave off the `--unsecure` flag to enable HTTPS locally
   * You can change this option after the project is created using `valet secure your-project-name` / `valet unsecure your-project-name`
   * Full list of options available [here](https://github.com/aaemnnosttv/wp-cli-valet-command#wp-valet-new)
-3. Confirm that the site is running with `open http://your-project-name.dev`
+3. Confirm that the site is running by opening the URL that is returned in the success message
 4. `cd` into the project directory
 
 
@@ -74,7 +81,7 @@ Now get our front-end process set up:
 
 1. `cd` into the theme folder (e.g. `cd your-project-name`)
 2. Run `npm install`
-3. Open up the _webpack.mix.js_ file (or use `subl webpack.mix.js`) and edit the **browsersync proxy to point to the .dev url** (e.g. <your-project-name.dev>)
+3. Open up the _webpack.mix.js_ file (or use `code webpack.mix.js`) and edit the **browsersync proxy to point to the .test url** (e.g. <your-project-name.test>)
 4. Run `npm run watch` to confirm that the source files compile successfully. The site should open up in your browser with a URL of <localhost:3000>
 
 Git

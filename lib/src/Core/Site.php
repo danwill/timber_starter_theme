@@ -30,6 +30,9 @@ class Site extends TimberSite
 
     public function addToTwig($twig)
     {
+        // To enable twig's dump() function, set `define( 'WP_DEBUG', true );` in wp_config.php
+        // It's also recommended to instal the timber-dump-extension for better formatting: 
+        //`composer require hellonico/timber-dump-extension`
         $twig->addExtension( new \Twig_Extension_StringLoader() );
         
         // Loads contents of an SVG file inline
