@@ -9,9 +9,9 @@ use Mechanic\Config\AdminSettings;
 use Mechanic\Config\MenuSettings;
 use Mechanic\Config\ImageSettings;
 use Mechanic\Config\ThemeSupport;
+use Mechanic\Core\Assets;
 use Mechanic\Core\Menu;
 use Timber\Site as TimberSite;
-use Timber\Helper as TimberHelper;
 
 class Site extends TimberSite
 {
@@ -54,6 +54,10 @@ class Site extends TimberSite
         // Filter: timber/twig
         // Adds filters, functions, and extensions to the Twig engine
         TwigSettings::register();
+
+        // Filter: wp_enqueue_scripts
+        // Enqueues assets, and generates versioned urls from the site manifest
+        Assets::register();
 
         add_filter('timber/context', [$this, 'addToContext']);
 

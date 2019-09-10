@@ -72,12 +72,13 @@ Let's clone in this starter theme and set up some stuff in Wordpress:
 6. Clone in this theme: `git clone --depth=1 https://github.com/danwill/timber_starter_theme.git your-project-name && rm -rf your-project-name/.git`
 7. `open https://www.advancedcustomfields.com/my-account/`, sign on, and download the most recent version of ACF Pro
 8. Copy the contents of the ACF Pro .zip file into the theme's `acf/` directory
-9. Add in the timber library: `composer require timber/timber`
-10. Activate the starter theme: `wp theme activate your-project-name`
+9. `cd` into the theme folder (e.g. `cd your-project-name`)
+10. Add in the timber library: `composer require timber/timber`
+11. Activate the starter theme: `wp theme activate your-project-name`
 
 Now get our front-end process set up:
 
-1. `cd` into the theme folder (e.g. `cd your-project-name`)
+1. Make sure you are in your theme folder
 2. Run `npm install`
 3. Open up the _webpack.mix.js_ file (or use `code webpack.mix.js`) and edit the **browsersync proxy to point to the .test url** (e.g. <your-project-name.test>)
 4. Run `npm run watch` to confirm that the source files compile successfully. The site should open up in your browser with a URL of <localhost:3000>
