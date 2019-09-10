@@ -108,16 +108,13 @@ If you are a team member working on a project that someone has already created u
 7. `git clone your.git.repo.url.here . `
   * _Note the trailing "space period space"_
 8. Open in Tower, if that's your thing: `gittower .` and make sure your remote _origin_ is set up correctly
-9. `wp plugin activate timber-library`
-10. `wp plugin activate soil`
-11. `wp theme activate your-project-name`
-12. `cd` into the theme folder (e.g. `cd themes/your-project-name`)
-13. Run `npm install`
-14. Run `npm run watch` to confirm that the source files compile successfully. The site should open up in your browser with a URL of <localhost:3000>
+9. `wp plugin activate soil`
+10. `wp theme activate your-project-name`
+11. `cd` into the theme folder (e.g. `cd themes/your-project-name`)
+12. Run `npm install`
+13. Run `npm run watch` to confirm that the source files compile successfully. The site should open up in your browser with a URL of <localhost:3000>
 
 ## Extras
-
-If you use Sublime Text and have the [CLI tools installed](https://www.sublimetext.com/docs/3/osx_command_line.html), you may want to run `subl .` from within your new theme (e.g. `themes/your-project-name`) and save the project.
 
 6. Set a static home page in Settings > Reading and choosing "A Static Page". This will automatically act as your home page and will reference the `views/front-page.twig` template.
 
