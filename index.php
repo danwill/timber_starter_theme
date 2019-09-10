@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  * This is the most generic template file in a WordPress theme
@@ -13,19 +14,11 @@
  * @since   Timber 0.1
  */
 
-if ( ! class_exists( 'Timber' ) ) {
-	echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
-	return;
+$context = Timber::context();
+$context['posts'] = new Timber\PostQuery();
+$context['foo'] = 'bar';
+$templates = array('index.twig');
+if (is_home()) {
+	array_unshift($templates, 'front-page.twig', 'home.twig');
 }
-$context = Timber::get_context();
-
-// We can access the loop of WordPress posts with the 'posts' variable.
-$context['posts'] = Timber::get_posts();
-
-
-// If we are on the home page, add a few other templates to our hierarchy.
-$templates = array( 'index.twig' );
-if ( is_home() ) {
-	array_unshift( $templates, 'front-page.twig', 'home.twig' );
-}
-Timber::render( $templates, $context );
+Timber::render($templates, $context);

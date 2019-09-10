@@ -1,7 +1,9 @@
-{% extends "base.twig" %}
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "index.twig" %}
 
 {% block content %}
-    {% for post in posts %}
-        {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-    {% endfor %}
+  <h3>This is my archive</h3>
+  {{ parent() }}
 {% endblock %}

@@ -7,10 +7,9 @@
         "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "laravel-mix": "^2.0",
-        "eslint-plugin-vue": "^4.7"
+        "laravel-mix": "^2.x"
     },
     "dependencies": {
-        "vue": "^2.0"
+        "vue": "^2.x"
     }
 }

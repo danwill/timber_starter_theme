@@ -20,17 +20,28 @@ mix.browserSync({
     ghostMode: false
 });
 
+if (mix.inProduction()) {
+    mix.version();
+    mix.options({
+        terser: {
+            terserOptions: {
+                compress: {
+                    drop_console: true
+                }
+            }
+        }
+    });
+}
+
 // mix.js(`${source}/scripts/app.js`, `${public}/js`).sourceMaps() //to enable sourcemaps
 mix.js(`${source}/scripts/app.js`, `${public}/js`)
     .sass(`${source}/styles/app.scss`, `${public}/css`, {
         outputStyle: mix.inProduction() ? 'compressed' : 'expanded'
     })
     .options({
-        processCssUrls:false
-    }); 
+        processCssUrls: false
+    });
 
-if(mix.inProduction()) {
-    mix.version();
-}
+
 
 mix.disableNotifications();

@@ -52,8 +52,6 @@ May need to increase PHP memory limit. If you get any "allowed memory size of X 
 
 Here's how to create a new Wordpress project and clone in this starter theme to get started:
 
-_**Note:** The following instructions are for setting up a project called **Mechanic**. Substitute in your own project name as needed._
-
 1. In your command line, go to your project folder (e.g. `~/Sites/`), or wherever you parked Valet above.
 2. Run `wp valet new your-project-name --unsecure`
   * You can leave off the `--unsecure` flag to enable HTTPS locally
@@ -68,13 +66,13 @@ Let's clone in this starter theme and set up some stuff in Wordpress:
 1. From your project folder, `cd` in the plugins folder: `cd wp-content/plugins`
 2. Clone in the [Soil plugin](https://roots.io/plugins/soil/): `git clone --depth=1 https://github.com/roots/soil.git --single-branch soil && rm -rf soil/.git`
 3. Remove some default plugins: `wp plugin uninstall hello akismet`
-4. Install Timber: `wp plugin install timber-library --activate`
-5. Activate Soil: `wp plugin activate soil`
-6. `cd ../themes`
+4. Activate Soil: `wp plugin activate soil`
+5. `cd ../themes`
   * You may want to remove the standard Wordpress themes from this directory (`open .`)
-7. Clone in this theme: `git clone --depth=1 https://github.com/danwill/timber_starter_theme.git your-project-name && rm -rf your-project-name/.git`
-8. `open https://www.advancedcustomfields.com/my-account/`, sign on, and download the most recent version of ACF Pro
-9. Copy the contents of the ACF Pro .zip file into the theme's `acf/` directory
+6. Clone in this theme: `git clone --depth=1 https://github.com/danwill/timber_starter_theme.git your-project-name && rm -rf your-project-name/.git`
+7. `open https://www.advancedcustomfields.com/my-account/`, sign on, and download the most recent version of ACF Pro
+8. Copy the contents of the ACF Pro .zip file into the theme's `acf/` directory
+9. Add in the timber library: `composer require timber/timber`
 10. Activate the starter theme: `wp theme activate your-project-name`
 
 Now get our front-end process set up:

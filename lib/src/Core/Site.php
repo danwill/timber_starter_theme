@@ -2,16 +2,60 @@
 
 namespace Mechanic\Core;
 
+use Mechanic\Config\ACFSettings;
+use Mechanic\Config\CustomPostTypes;
+use Mechanic\Config\CustomTaxonomies;
+use Mechanic\Config\AdminSettings;
+use Mechanic\Config\MenuSettings;
+use Mechanic\Config\ImageSettings;
+use Mechanic\Config\ThemeSupport;
 use Mechanic\Core\Menu;
 use Timber\Site as TimberSite;
 use Timber\Helper as TimberHelper;
 
 class Site extends TimberSite
 {
+    // Run the various classes that will register with a Wordpress hook and 
+    // configure our Wordpress site
     public function __construct()
     {
-        add_filter('get_twig', [$this, 'addToTwig']);
-        add_filter('timber_context', [$this, 'addToContext']);
+        // Action: after_setup_theme
+        // Configures `add_theme_support` settings
+        ThemeSupport::register();
+
+        // Action: init
+        // Handles `register_post_type` calls for custom post types
+        CustomPostTypes::register();
+
+        // Action: init
+        // Handles `register_taxonomy` calls for custom taxonomy items
+        CustomTaxonomies::register();
+
+        // Actions: admin_menu, login_enqueue_scripts
+        // Configures Wordpress admin settings (login logo, visible menu items)
+        AdminSettings::register();
+
+        // Action: init
+        // Handles `register_nav_menus` for menu setup
+        MenuSettings::register();
+
+        // Actions: post_type_labels_post, manage_post_posts_columns
+        // Configure labels for default Post type
+        // PostSettings::register();
+
+        // Action: after_setup_theme
+        // Registers `add_image_size` calls and sets image quality
+        ImageSettings::register();
+
+        // Filters: various acf/ prefixed filters
+        // Fine-tunes ACF settings, including creating Options pages
+        ACFSettings::register();
+
+        // Filter: timber/twig
+        // Adds filters, functions, and extensions to the Twig engine
+        TwigSettings::register();
+
+        add_filter('timber/context', [$this, 'addToContext']);
 
         parent::__construct();
     }
@@ -22,56 +66,9 @@ class Site extends TimberSite
 
         // Enable to add ACF options page fields to the global context
         // $context['options'] = get_fields('option');
-        
+
         $context['site'] = $this;
 
         return $context;
-    }
-
-    public function addToTwig($twig)
-    {
-        // To enable twig's dump() function, set `define( 'WP_DEBUG', true );` in wp_config.php
-        // It's also recommended to instal the timber-dump-extension for better formatting: 
-        //`composer require hellonico/timber-dump-extension`
-        $twig->addExtension( new \Twig_Extension_StringLoader() );
-        
-        // Loads contents of an SVG file inline
-        $twig->addFunction( new \Twig_SimpleFunction( 'svg', function( $path ) {
-            if (substr($path, 0, 1) !== '/') {
-                $path = "/{$path}";
-            }
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, get_template_directory_uri() . $path);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-            $data = curl_exec($ch);
-            curl_close($ch);
-            echo $data;
-        }));
-
-        // Example of a custom Twig filter
-        $twig->addFilter( new \Twig_SimpleFilter('break_space', function( $text ) {
-            return str_replace(' ', '<br>', $text);
-        }));
-
-        $twig->addFilter( new \Twig_SimpleFilter('json_prop', function( $text ) {
-            return htmlentities(json_encode($text, JSON_HEX_QUOT), ENT_QUOTES);
-        }));
-
-        $twig->addFilter( new \Twig_SimpleFilter('safe_email', function ($str) {
-            $email   = '';
-            for ( $i = 0, $len = strlen( $str ); $i < $len; $i++ ) {
-                $j = rand( 0, 1);
-                if ( $j == 0 ) {
-                    $email .= '&#' . ord( $str[$i] ) . ';';
-                } elseif ( $j == 1 ) {
-                    $email .= $str[$i];
-                }
-            }
-            return str_replace( '@', '&#64;', $email );
-        }));
-
-        return $twig;
     }
 }

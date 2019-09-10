@@ -1,13 +1,14 @@
 <?php
+
 namespace Mechanic\Config;
 
 class CustomTaxonomies
 {
     public static function register()
     {
-        // add_action('init', [get_called_class(), 'taxonomies'], 0);
+        add_action('init', [get_called_class(), 'configure'], 0);
     }
-    public static function taxonomies()
+    public static function configure()
     {
         /*
         $labels = array(
@@ -34,7 +35,7 @@ class CustomTaxonomies
         );
         */
         // Can leave the item out of the side nav by leaving this array empty. Can attach via ACF
-        register_taxonomy( 'custom_taxonomy', ['custom_post'], $args );
+        // register_taxonomy( 'custom_taxonomy', ['custom_post'], $args );
 
     }
 }

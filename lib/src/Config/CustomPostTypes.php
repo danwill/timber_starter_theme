@@ -16,15 +16,17 @@ use Mechanic\PostTypes\CustomPost;
  *
  * 
  */
+
 class CustomPostTypes
 {
     public static function register()
     {
-        add_action('init', [get_called_class(), 'types']);
+        add_action('init', [get_called_class(), 'configure']);
+
         // add_action( 'admin_menu' , [get_called_class(), 'configMetaBoxes']);
     }
 
-    public static function types()
+    public static function configure()
     {
         /*
         register_post_type(
@@ -47,16 +49,13 @@ class CustomPostTypes
                 'show_in_nav_menus' => true,
             ]
         );
-        */
-    }
+        */ }
 
     // Removes custom taxonomy meta box from custom post type so we can use ACF instead
-    /*
-    public static function configMetaBoxes() {
-        remove_meta_box( 'sectordiv', 'person', 'side' );
-        remove_meta_box( 'sectordiv', 'company', 'side' );
+    public static function configMetaBoxes()
+    {
+        remove_meta_box('sectiondiv', 'article', 'side');
     }
-    */
 
     /**
      * Example showing how to modify the listing view for a custom post type
