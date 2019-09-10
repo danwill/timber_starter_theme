@@ -17,6 +17,8 @@ if (!class_exists('Timber')) {
 }
 
 use Timber\Timber;
+use Mechanic\Core\Site;
+
 // Timber::$cache = true;
 Timber::$dirname = [
     'views',
@@ -30,7 +32,5 @@ Timber::$dirname = [
 Timber::$autoescape = false;
 
 require_once('lib/autoload.php');
-
-include('lib/src/Core/Site.php');
 
 new Site();
