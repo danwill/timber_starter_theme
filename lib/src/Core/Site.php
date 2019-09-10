@@ -8,6 +8,7 @@ use Mechanic\Config\CustomTaxonomies;
 use Mechanic\Config\AdminSettings;
 use Mechanic\Config\MenuSettings;
 use Mechanic\Config\ImageSettings;
+use Mechanic\Config\TwigSettings;
 use Mechanic\Config\ThemeSupport;
 use Mechanic\Core\Assets;
 use Mechanic\Core\Menu;
